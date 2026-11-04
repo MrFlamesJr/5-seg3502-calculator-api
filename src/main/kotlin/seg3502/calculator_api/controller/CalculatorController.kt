@@ -18,5 +18,10 @@ class CalculatorController {
 	fun multiply(@PathVariable nombre1: Double, @PathVariable nombre2: Double) = nombre1 * nombre2
 
 	@GetMapping("/divide/{nombre1}/{nombre2}")
-	fun divide(@PathVariable nombre1: Double, @PathVariable nombre2: Double) = nombre1 / nombre2
+	fun divide(@PathVariable nombre1: Double, @PathVariable nombre2: Double): Double {
+		if (nombre2 == 0.0) {
+			throw IllegalArgumentException("Division by zero is not allowed")
+		}
+		return nombre1 / nombre2
+	}
 }
